@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-//import React from "react";
 import '../App.css'; // You can create your own CSS file for styling
 
 const Box = ({ color, title, onClick }) => {
     const boxStyle = {
       backgroundColor: color,
-      width: '80px', // Increase the width and height
-      height: '80px',
+      width: '10%', // Increase the width and height
+      height: '100px',
       margin: '10px', // Adjust margin for spacing
       display: 'inline-flex',
       alignItems: 'center',
@@ -16,7 +15,7 @@ const Box = ({ color, title, onClick }) => {
     };
   
     const textStyle = {
-      color: 'white', // Text color
+      color: '#FFFFFF', // Text color
       fontWeight: 'bold',
     };
   
@@ -41,15 +40,15 @@ export default function Home(){
   
     const [rows, setRows] = useState([
         [
-          { color: 'red', title: 'Chest', onClick: () => handleBoxClick('Chest') },
-          { color: 'black', title: 'Shoulder', onClick: () => handleBoxClick('Shoulder') },
-          { color: 'red', title: 'Arms', onClick: () => handleBoxClick('Arms') },
-          { color: 'black', title: 'Legs', onClick: () => handleBoxClick('Legs') },
+          { color: '#da1a32', title: 'Chest', onClick: () => handleBoxClick('Chest') },
+          { color: '#a00c30', title: 'Shoulder', onClick: () => handleBoxClick('Shoulder') },
+          { color: '#da1a32', title: 'Arms', onClick: () => handleBoxClick('Arms') },
+          { color: '#a00c30', title: 'Legs', onClick: () => handleBoxClick('Legs') },
         ],
         [
-          { color: 'black', title: 'Back', onClick: () => handleBoxClick('Back') },
-          { color: 'red', title: 'Core', onClick: () => handleBoxClick('Core') },
-          { color: 'black', title: 'Cardio', onClick: () => handleBoxClick('Cardio') },
+          { color: '#da1a32', title: 'Back', onClick: () => handleBoxClick('Back') },
+          { color: '#a00c30', title: 'Core', onClick: () => handleBoxClick('Core') },
+          { color: '#da1a32', title: 'Cardio', onClick: () => handleBoxClick('Cardio') },
         ],
       ]);
     
@@ -61,7 +60,7 @@ export default function Home(){
       
     return(
         <div className='App'>
-            <header>Workout</header>
+            <header className='Home'>Workouts</header>
             {rows.map((boxes, rowIndex) => (
                 <RowOfBoxes key={rowIndex} boxes={boxes} />
             ))}

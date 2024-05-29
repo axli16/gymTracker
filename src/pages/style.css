@@ -1,0 +1,281 @@
+@font-face {
+  font-family: 'Odachi';
+  src: url('./Fonts/Odachi/Webfont/Odachi.woff') format('woff'); /* Modern Browsers */
+  /* Add other font formats if needed */
+
+}
+@font-face {
+  font-family: 'ketta';
+  src: url('./Fonts/hello-ketta-font/HelloKetta-d99oX.ttf') format('truetype');
+}
+
+.Arms {
+    text-align: center;
+  }
+.App{
+  margin: 0; 
+  padding: 0;
+  background-image:url(./images/red.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh; 
+}
+.Home{
+    font-size: 10em;
+    font-family: 'Odachi', sans-serif;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+.Reps{
+    /* Your main content styles */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background-color: 'transparent';
+    position: relative;
+    z-index: 1; /* Ensure the content is behind the sidebar */
+}
+
+
+.toggle-button {
+  /* Button to toggle sidebar */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 3; /* Ensure the button is above the sidebar */
+}
+
+.box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+  border: 1px solid transparent;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+  background-color: rgba(160, 12, 48, 0.8); /* Changed to RGBA for translucency */
+  border-radius: 20px; /* Increased border-radius for more curved edges */
+  margin: 0 10%; /* Extend off the edges of the screen */
+  width: 80%; /* Adjust width to fit the screen with margins */
+  margin-bottom: 20px;
+}
+  
+  .box {
+    width: 100%; 
+    height: 150px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .group{
+    font-family: 'Odachi', sans-serif; /* Use a bold and impactful font */
+    font-size: 5rem; /* Increase font size for emphasis */
+    color: white; 
+    text-align: center; /* Center align the text */
+    margin-bottom: 20px; /* Add some space below the heading */
+    text-transform: uppercase; /* Uppercase the text */
+    letter-spacing: 2px; /* Adjust letter spacing for emphasis */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow */
+  }
+  .Set{
+    font-family: 'Odachi', sans-serif; /* Use a bold and impactful font */
+    font-size: 1.8rem; /* Increase font size for emphasis */
+    color: white; /* Energetic green color */
+    text-align: center; /* Center align the text */
+    margin-bottom: 20px; /* Add some space below the heading */
+    text-transform: uppercase; /* Uppercase the text */
+    letter-spacing: 1px; /* Adjust letter spacing for emphasis */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow */
+  }
+  .tag{
+    background: none;
+    border: none;
+    font-size: 3rem; /* Font size similar to h2 */
+    font-family: 'Odachi', sans-serif; /* Same bold font as h2 */
+    color: white; /* Same energetic green color as h2 */
+    cursor: pointer;
+    text-transform: uppercase; /* Same uppercase text as h2 */
+    letter-spacing: 1px; /* Same letter spacing as h2 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Same text shadow as h2 */
+  }
+  .tag:hover {
+    text-decoration: underline; /* Optional: Add underline on hover */
+  }
+
+      /* Style for the input */
+      .styled-input {
+        width: 100px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s ease;
+        font-family: 'Odachi', sans-serif;
+      }
+  
+      /* Hover effect */
+      .styled-input:hover,
+      .styled-input:focus {
+        border-color: #da1a32;
+      }
+  
+      /* Placeholder text style */
+      .styled-input::placeholder {
+        color: #999;
+      }
+  
+      /* Style for the submit button */
+      .styled-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #da1a32;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+  
+      /* Hover effect for the submit button */
+      .styled-button:hover {
+        background-color: #da1a32;
+      }
+      .x-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        border: 2px solid #333;
+        border-radius: 50%;
+        font-size: 24px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+
+/* Note pad */
+.journal{
+  background-color: transparent;
+  border: transparent;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%; /* Adjust the width as needed */
+  max-width: 600px; /* Set a maximum width */
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.note-textarea {
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 2.5rem;
+  font-family: ketta, sans-serif;
+}
+
+.addButton {
+  position: fixed;
+  top: 20px; /* Adjust as needed */
+  right: 5%; /* Adjust as needed */
+  background-color: white; /* Button background color */
+  color: black; /* Button text color */
+  border: none;
+  border-radius: 50%; /* Make it a circle */
+  width: 50px; /* Button width */
+  height: 50px; /* Button height */
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+.addButton:hover {
+  background-color: #da1a32; /* Change color on hover */
+}
+.deleteButton {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.deleteButton:hover {
+  text-decoration: underline; /* Optional: Add underline on hover */
+}
+
+.workouts {
+  display: flex; /* Use flexbox */
+  margin: 0; 
+  padding: 0;
+  background-image: url(./images/red.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Make the background image fixed */
+  height: 100vh; 
+  width: 100vw; /* Ensure it covers the full width of the viewport */
+  overflow: auto; /* Ensure the content is scrollable */
+}
+
+.workouts > * {
+  flex: 1; /* Each child element takes up equal space */
+  margin: 0 10px; /* Optional: Add some spacing between the columns */
+}
+
+/* history css */
+.history-bar{
+}
+.history-title{
+  font-family: Odachi, sans-serif;
+  font-size: 2.5rem;
+}
+.sidebar {
+  /* Sidebar styles */
+  width: 18%; /* Adjust width as needed */
+  height: 100%;
+  background-color: rgba(160, 12, 48, 1);
+  position: fixed; /* Fixed position to overlay content */
+  top: 0;
+  right: -250px; /* Initially hidden */
+  transition: right 0.3s ease; /* Smooth transition */
+  z-index: 2; /* Ensure the sidebar is above the content */
+}
+
+.sidebar.open {
+  right: 0; /* Slide in from the right */
+}
