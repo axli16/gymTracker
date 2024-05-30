@@ -2,16 +2,20 @@ import React, {useState, useEffect, useRef} from 'react';
 import './style.css'
 import journal from './images/journal.svg';
 import History from './History';
+import { useNavigate } from 'react-router-dom';
 
-export default function Reps({exercise, addExercise, deleteExercise, updateExerciseNotes}){
+export default function Reps({exercise, addExercise, deleteExercise, updateExerciseNotes,section,addSideBarContent, inputValues, setInputValues,sidebarContent, setSidebarContent,deleteSideBarContent}){
     const handleBoxClick = (boxName) => {
         const newEndpoint = `/${boxName}`;
-        window.location.href=newEndpoint;
+        navigate(newEndpoint);
+
       };
-    
+      const navigate = useNavigate();
+      
     const [openNotepadId, setOpenNotepadId] = useState(null);
     const textareaRef = useRef(null);
     const modalContentRef = useRef(null);
+    const [name,setName]=useState('')
 
     const openNotepad = (id) => {
       setOpenNotepadId(id)
@@ -42,34 +46,80 @@ export default function Reps({exercise, addExercise, deleteExercise, updateExerc
 
 
     const [isOpen, setIsOpen] = useState(false);
-    const [sidebarContent, setSidebarContent] = useState(null);
+    
 
-    const toggleSidebar = (content) => {
-      setSidebarContent(content);
+    const toggleSidebar = (ex) => {
+      setName(ex.toString());
       setIsOpen(!isOpen);
     };
     
+    const handleInputChange = (exerciseId, Name, value) => {
+      setInputValues(prevState => ({
+        ...prevState,
+        [exerciseId]: {
+          ...prevState[exerciseId],
+          [Name]: value,
+        }
+      }));
+    };
+    const clearInputValues = (exerciseId) => {
+      setInputValues(prevInputValues => ({
+          ...prevInputValues,
+          [exerciseId]: { weight1: '', reps1: '', weight2: '', reps2: '', weight3: '', reps3: '' }
+      }));
+  };
+
   return(
     <>
     <div className={`Reps ${isOpen ? 'shift-right' : ''}`}>
         <button className="x-button" onClick={() => handleBoxClick('')}>X</button>
-        <button className="addButton" onClick={() => addExercise()}>+</button>
-        <h1 className="group">Back</h1>
-        {exercise.map((exercises) =>(
+        <button className="addButton" onClick={() => addExercise(section)}>+</button>
+        <h1 className="group">{section}</h1>
+        {exercise.filter((exercise)=> exercise.section===section).map((exercises) =>(
             <div key ={exercise.id} className="box-container" >
-                <button className="tag" onClick={() => toggleSidebar({ title: exercises.title })}>
+                <button className="tag" onClick={() => toggleSidebar(exercises.title)}>
                   {exercises.title}
                 </button>
                 <div className="box">
                     <h2 className="Set">Set 1</h2>
-                    <input type="number" className= "styled-input" placeholder="Weight(lb)" />
-                    <input type="number" className= "styled-input" placeholder="Reps" />
+                    <input 
+                    type="number" 
+                    className= "styled-input" 
+                    placeholder="Weight(lb)"  
+                    value={inputValues[exercises.id]?.weight1 || ''}
+                    onChange={e=>handleInputChange(exercises.id, 'weight1', e.target.value)}/>
+                    <input 
+                    type="number" 
+                    className= "styled-input" 
+                    placeholder="Reps"
+                    value={inputValues[exercises.id]?.reps1 || ''}
+                    onChange={e => handleInputChange(exercises.id, 'reps1', e.target.value)} />
                     <h2 className="Set">Set 2</h2>
-                    <input type="number" className= "styled-input" placeholder="Weight(lb)" />
-                    <input type="number" className= "styled-input" placeholder="Reps" />
+                    <input 
+                    type="number" 
+                    className= "styled-input" 
+                    placeholder="Weight(lb)"
+                    value={inputValues[exercises.id]?.weight2 || ''}
+                    onChange={e => handleInputChange(exercises.id, 'weight2', e.target.value)} />
+                    <input 
+                    type="number" 
+                    className= "styled-input" 
+                    placeholder="Reps"
+                    value={inputValues[exercises.id]?.reps2 || ''}
+                    onChange={e => handleInputChange(exercises.id, 'reps2', e.target.value)} />
                     <h2 className="Set">Set 3</h2>
-                    <input type="number" className= "styled-input" placeholder="Weight(lb)" />
-                    <input type="number" className= "styled-input" placeholder="Reps" />
+                    <input
+                    type="number" 
+                    className= "styled-input" 
+                    placeholder="Weight(lb)"
+                    value={inputValues[exercises.id]?.weight3 || ''}
+                    onChange={e => handleInputChange(exercises.id, 'weight3', e.target.value)} />
+                    <input
+                    type="number" 
+                    className= "styled-input" 
+                    placeholder="Reps"
+                    value={inputValues[exercises.id]?.reps3 || ''}
+                    onChange={e =>handleInputChange(exercises.id, 'reps3', e.target.value)} />
                     <button className="journal" onClick={() => openNotepad(exercises.id)}>
                         <img src={journal} alt='journal'/>
                     </button>
@@ -92,13 +142,12 @@ export default function Reps({exercise, addExercise, deleteExercise, updateExerc
                   <button className='deleteButton' onClick={() => deleteExercise(exercises.id)}>X</button>
                 </div>
                 <div>
-                    <button type="submit" className="styled-button">Submit</button>
-                    {/* need to add onCLick for this  */}
+                    <button type="submit" className="styled-button"onClick={()=>{addSideBarContent(exercises); clearInputValues(exercises.id);}}>Submit</button>
                 </div>
             </div>
         ))}
         
-        <History isOpen={isOpen} content={sidebarContent}/>
+        <History isOpen={isOpen} titleName={name} content={sidebarContent} setSidebarContent={setSidebarContent}/>
 
     </div>
 

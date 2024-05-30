@@ -4,12 +4,12 @@ import Reps from './Reps';
 
 
 
-export default function Back ({exercise, addExercise, deleteExercise, setExercise, updateExerciseNotes}){
+export default function Back ({exercise, addExercise, deleteExercise, updateExerciseNotes,section ,addSideBarContent,inputValues, setInputValues,sidebarContent, setSidebarContent}){
 
 
     return(
         <div className='workouts'>
-            <Reps exercise={exercise} addExercise={addExercise} deleteExercise={deleteExercise}  updateExerciseNotes={updateExerciseNotes}/>
+            <Reps exercise={exercise} addExercise={addExercise} deleteExercise={deleteExercise}  updateExerciseNotes={updateExerciseNotes} section={section} addSideBarContent={addSideBarContent} inputValues={inputValues} setInputValues={setInputValues} sidebarContent={sidebarContent} setSidebarContent={setSidebarContent}/>
         </div>
         
     )

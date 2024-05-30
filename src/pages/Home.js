@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css'; // You can create your own CSS file for styling
+import { useNavigate } from 'react-router-dom';
 
 const Box = ({ color, title, onClick }) => {
     const boxStyle = {
@@ -36,9 +37,9 @@ const Box = ({ color, title, onClick }) => {
     );
   };
 
-export default function Home(){
+export default function Home(exercise){
   
-    const [rows, setRows] = useState([
+    const [rows] = useState([
         [
           { color: '#da1a32', title: 'Chest', onClick: () => handleBoxClick('Chest') },
           { color: '#a00c30', title: 'Shoulder', onClick: () => handleBoxClick('Shoulder') },
@@ -51,12 +52,12 @@ export default function Home(){
           { color: '#da1a32', title: 'Cardio', onClick: () => handleBoxClick('Cardio') },
         ],
       ]);
-    
+      const navigate = useNavigate();
       const handleBoxClick = (boxName) => {
-        const newEndpoint = `/${boxName}`;
-        window.location.href=newEndpoint;
+        
+      const newEndpoint = `/${boxName}`;
+        navigate(newEndpoint);
       };
-
       
     return(
         <div className='App'>

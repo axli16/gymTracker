@@ -134,6 +134,7 @@
       .styled-button {
         padding: 10px 20px;
         font-size: 16px;
+        font-family: Odachi, sans-serif;
         background-color: #da1a32;
         color: #fff;
         border: none;
@@ -144,7 +145,7 @@
   
       /* Hover effect for the submit button */
       .styled-button:hover {
-        background-color: #da1a32;
+        background-color: #FF0000;
       }
       .x-button {
         position: fixed;
@@ -258,11 +259,18 @@
 }
 
 /* history css */
-.history-bar{
+
+.history-bar {
+  border: 1px solid #ccc; /* Add border for the box */
+  padding: 10px; /* Add padding to the box */
+  margin-bottom: 10px; /* Add margin between each history bar */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
 }
 .history-title{
   font-family: Odachi, sans-serif;
   font-size: 2.5rem;
+  text-align: center;
 }
 .sidebar {
   /* Sidebar styles */
@@ -274,8 +282,32 @@
   right: -250px; /* Initially hidden */
   transition: right 0.3s ease; /* Smooth transition */
   z-index: 2; /* Ensure the sidebar is above the content */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar.open {
   right: 0; /* Slide in from the right */
+}
+
+.deleteButton1 {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.deleteButton1:hover {
+  text-decoration: underline; /* Optional: Add underline on hover */
+}
+h3{
+  font-family: Odachi, sans-serif;
+
+}
+p{
+  font-family: Odachi, sans-serif;
 }
